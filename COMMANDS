@@ -1,0 +1,69 @@
+TERMINAL COMMANDS
+
+COMPILE:
+
+nasm -felf64 name>.asm -g -F dwarf -l <listing file name>.lst -o <object name>.o
+(adds debuging info into the object file and outputs listing file)
+
+- Debugging info is neded for debugging
+- Listing file includes goodies such as addresses or offsets of instructions (2 column)
+  and instructions in hex format (3 column). Not necessary for debugging so -l <listing file name>.lst
+  can be omitted.
+
+LINK:
+
+ld <object name>.o -o <executable name>  (no additional library)
+gcc <object name>.o -o <executable name> (linking libc library)
+
+EXECUTE:
+
+./<exectutable name>
+
+DEBUG:
+
+gdb <executable name> (start debugging)
+
+break <file name>.asm:<line number> (conventional breakpoint)
+
+break <label name> e.g. _start (conventional breakpoint)
+
+break <file name>.asm:<line number> if <register> == <value>
+(conditional breakpoint)
+
+run (will run to breakpoint or end of program)
+
+record (allows the use of rni and rsi commands, cannot be used before run command)
+
+ni (next instruction)
+
+rni (previous instruction, cannot be used before record command)
+
+si (step into next instruction inside function, do not use with c functions!)
+
+rsi (previous instruction inside function, cannot be used before record command)
+
+jump <label name> (e.g. start over: jump _start or main)
+
+i r <register> (prints register value in decimal)
+
+p/t $<register> (prints register value in binary)
+
+p(declared type)<memory location name> (prints memory location)
+length = declared type
+byte = char
+word (2 byte) = short int
+doubleword (4 byte) = int
+quadword (8 byte) = long int
+
+p (<declared type>[n])<array name> 
+(prints elements in array up to nth element
+
+info registers eflags (prints status flags that are set/raised)
+
+shell clear (clears the screen)
+
+q (quits debugger)
+
+OTHER:
+
+echo $? (displays return value, rdi (no libc) rax (libc))
