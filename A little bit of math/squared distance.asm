@@ -33,30 +33,30 @@ section .text
 
 _start: movzx ax, [point1_x]
         mov   bx, ax
-	    movzx cx, [point2_x]
+        movzx cx, [point2_x]
 	    
-	    sub   ax, cx
+	sub   ax, cx
         sub   cx, bx
         mov   bx, cx
-	    cmovs cx, ax 
-	    cmovs cx, bx ; the result is intepreted as an unsigned value (check slope.asm file)
+        cmovs cx, ax 
+        cmovs cx, bx ; the result is intepreted as an unsigned value (check slope.asm file)
 
-	    imul  ecx, ecx
+        imul  ecx, ecx
 
         movzx ax, [point1_y]
-	    mov   cx, ax
+	mov   cx, ax
         movzx dx, [point2_y]
 
-	    sub   ax, dx
-	    sub   dx, cx
+	sub   ax, dx
+	sub   dx, cx
     	mov   cx, dx 
     	cmovs dx, ax
     	cmovo dx, cx
 	
         imul  edx, edx
 
-	    add   rcx, rdx
+	add   rcx, rdx
 
     	mov   rax, 60
-	    mov   rdi, 0
-	    syscall
+        mov   rdi, 0
+	syscall
