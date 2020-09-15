@@ -160,7 +160,7 @@ normlz:   xor    r8, r8
           and    r11, rcx
           setns  r12b
 
-          inc    r8              ; checks the 23th bit right of the msb is set
+          inc    r8              ; checks if the 23th bit right of the msb is set
           xor    r11, r11
           bt     rcx, r8
           setc   r11b
@@ -183,7 +183,7 @@ done:     mov    r9, 1           ; discards the significant one from the product
           not    r9
           and    rcx, r9   
 
-          add    rdx, 127        ; adds the bias to the exponent and "assembles" the presentation for the float product
+          add    rdx, 127        ; adds the bias to the exponent and finishes the floating point representation
           shl    rdx, 23
           or     rsi, rdx
           or     rsi, rcx
