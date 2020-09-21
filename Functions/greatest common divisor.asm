@@ -1,3 +1,8 @@
+
+; "64 Bit Intel Assembly Language Programming for Linux"
+;
+; p.98 exercise 6.
+;
 ; Write an assembly program to read two 8 byte integers with scanf
 ; and compute their greatest common divisor using Euclid's algo­rithm, 
 ; which is based on the recursive definition
