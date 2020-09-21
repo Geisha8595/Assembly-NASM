@@ -51,9 +51,9 @@ main:   push  rbp                       ; saves the caller's stack frame and cre
 
 gcd:    push  rbp                       
         mov   rbp, rsp
-        mov   rbx, rdx                  ; 
-        inc   rbx                       ; increments c
-        push  rbx                       ; saves rbx which holds the parameter c
+        mov   rbx, rdx                  
+        inc   rbx                       ; increments the parameter c
+        push  rbx                       ; saves the parameter c
 
         cmp   rsi, 0                    ; checks if b = 0
         cmovz rax, rdi
