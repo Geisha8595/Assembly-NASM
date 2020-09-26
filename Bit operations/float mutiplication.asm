@@ -71,10 +71,10 @@ _start:   mov    eax, [float1]
 
           xor    r9, r9
           cmp    rdx, 0xff
-          setc   r9
+          setz   r9
           xor    r10, r10
           cmp    r8, 0xff
-          setc   r10
+          setz   r10
           or     r9, r10
           jz     no_NaN
           or     rsi, 0x3fc00000
