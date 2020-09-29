@@ -12,7 +12,7 @@
 ; function to print the array contents. If the array size is less than or
 ; equal to 20, call your print function before and after printing.
 ;
-; I wrote a c++ program which printed RAND_MAX and it turned out to be
+; I wrote a c program which printed RAND_MAX and it turned out to be
 ; 2147483647 which fits in a 4 byte register. System time could be use
 ; as a "seed" to generate a different sequence of numbers on each run.
 ; The output is unfortunately the same each time.
