@@ -10,7 +10,7 @@
 ; where NaNs are involved or when the operations overflows/underflows. Operations which
 ; involve infinity will have unexpected results.
 ;
-; I haven't tested this program thoroughly
+; This program is not tested
 
 section .data
 	float1: dd -18.0      
