@@ -12,6 +12,35 @@
 ; than 1000. Use quotient and remainder after dividing by 100 to print the amounts as normal 
 ; dollars and cents. Write and use a function to compute the bill amount (in pennies).
 
+; C library functions which use SSE or AVX instructions (used for parallel calculations) require 
+; the stack pointer to be aligned to 16 byte boundary in memory because this allows the local 
+; variables to be placed at 16 byte alignments for SSE and AVX instructions. Same goes for the 
+; data section, data has to be placed at 16 byte alignments for SSE and AVX instructions. 
+; The 16 byte requirement is related to performance and it might also allow for simpler physical 
+; implementations. The memory is usually accessed in blocks (multiple of byte) and the block size
+; depends on the system. If the variable size is smaller than the block size the variable is placed 
+; at an address equal to a multiple of the variable size and if the block size is smaller than the 
+; variable size the variable is placed at an address equal to a multiple of the block size. How
+; missaligned data is handled depends on the system. Some systems recognises it and performs extra
+; steps (additional memory accesses and shifting) which takes longer, some systems recognises it
+; but cannot handle it, instead they throw an exception. If the stack is not aligned to a 16 byte
+; boundary for C library functions which use SEE or AVX instructions a segmentation fault is issued.
+; Some systems cannot handle missaligned data and crash if an attempt to access is made. Instructions
+; may handle missaligned data differently. 
+; Then there is this: "You can push and pop smaller values than  8 bytes, at some peril. It works as long 
+; as the stack remains bounded appropriately for the current operation. So if you push a word and then push 
+; a quad-word, the quad­ word push may fail. It is simpler to push and pop only 8 byte quantities" which is 
+; taken from the book (64 Bit Intel Assembly Language Programming for Linux). I don't understand the second
+; last sentence.
+
+; The return value from scanf is stored in rax and it tells how many of the inputs specified
+; in the scanf format were successfully picked from stdin stream. If only 2 inputs are acceptable
+; 3 inputs has to be specified in the scanf format because if only 2 inputs were specified in
+; scanf format and 3 inputs were given scanf would return 2. Ascii numbers could be used
+; to verify the character array input.
+
+; Here scanf doesn't accept space characters
+
 %define nr_of_samples 3
 
 section .data
