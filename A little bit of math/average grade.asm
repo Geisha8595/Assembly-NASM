@@ -21,19 +21,19 @@ section .text
 	global _start
 
 _start: movzx rax, byte [grade1]
-	    movzx rbx, byte [grade2]
-	    movzx rcx, byte [grade3]
-	    movzx rdx, byte [grade4]
-	    add   ax, bx
-	    add   ax, cx
-	    add   ax, dx
+	movzx rbx, byte [grade2]
+	movzx rcx, byte [grade3]
+	movzx rdx, byte [grade4]
+	add   ax, bx
+	add   ax, cx
+	add   ax, dx
 
         mov   bl, 4
-	    div   bl
+        div   bl
 
-	    mov   [average], al
-	    mov   [remainder], ah
+	mov   [average], al
+	mov   [remainder], ah
 
-	    mov   rax, 60
-	    mov   rdi, 0
-	    syscall
+        mov   rax, 60
+	mov   rdi, 0
+	syscall
